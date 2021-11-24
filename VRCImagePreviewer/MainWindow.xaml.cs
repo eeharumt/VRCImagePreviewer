@@ -1,24 +1,13 @@
 ﻿
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
-using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Interop;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using Image = System.Windows.Controls.Image;
 using Microsoft.WindowsAPICodePack.Dialogs;
 
@@ -37,20 +26,6 @@ namespace VRCImagePreviewer
         }
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            //string direcotryPath = Environment.GetFolderPath(Environment.SpecialFolder.MyPictures);
-            //string[] files = System.IO.Directory.GetFiles(System.IO.Path.Combine(direcotryPath, "VRChat/2021-11"), "*.png", System.IO.SearchOption.AllDirectories);
-            //foreach (string str in files)
-            //{
-            //    //Debug.WriteLine(str);
-            //    var Image = new BitmapImage();
-            //    FileStream stream = File.OpenRead(str);
-            //    Image.BeginInit();
-            //    Image.CacheOption = BitmapCacheOption.OnLoad;
-            //    Image.StreamSource = stream;
-            //    Image.DecodePixelWidth = 240;
-            //    Image.EndInit();
-            //    list.Add(new Photo { Source =Image, FilePath= str});
-            //}
             string watchFolder = Properties.Settings.Default.watchFolder;
             if (watchFolder == "")
             {
@@ -76,11 +51,7 @@ namespace VRCImagePreviewer
                                  | NotifyFilters.Security
                                  | NotifyFilters.Size;
 
-            //watcher.Changed += OnChanged;
             watcher.Created += OnCreated;
-            //watcher.Deleted += OnDeleted;
-            //watcher.Renamed += OnRenamed;
-            //watcher.Error += OnError;
 
             listView.DataContext = list;
             BindingOperations.EnableCollectionSynchronization(list, new object());
@@ -89,11 +60,11 @@ namespace VRCImagePreviewer
 
         private void listView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (listView.SelectedItem == null) return; // ListViewで何も選択されていない場合は何もしない
+            if (listView.SelectedItem == null) return; 
 
-            Photo item = (Photo)listView.SelectedItem; // ListViewで選択されている項目を取り出す
+            Photo item = (Photo)listView.SelectedItem; 
             
-            ImgViewer.Source = new BitmapImage(new Uri(item.FilePath)); // 取り出された項目のプロパティをTextBlockに表示する
+            ImgViewer.Source = new BitmapImage(new Uri(item.FilePath)); 
         }
 
         private void SelectImgFolder_Click(object sender, RoutedEventArgs e)
@@ -105,16 +76,6 @@ namespace VRCImagePreviewer
                 IsFolderPicker = true,
             };
 
-
-
-
-
-
-
-            //var dialog = new Ookii.Dialogs.Wpf.VistaFolderBrowserDialog();
-            //dialog.Description = "監視したいフォルダを選択...";
-            //dialog.UseDescriptionForTitle = true;
-            //dialog.ShowNewFolderButton = true;
             if (dialog.ShowDialog() != CommonFileDialogResult.Ok)
             {
                 return;
@@ -145,15 +106,7 @@ namespace VRCImagePreviewer
                                      | NotifyFilters.Security
                                      | NotifyFilters.Size;
 
-                //watcher.Changed += OnChanged;
                 watcher.Created += OnCreated;
-                //watcher.Deleted += OnDeleted;
-                //watcher.Renamed += OnRenamed;
-                //watcher.Error += OnError;
-
-
-
-
 
         }
         private void OnCreated(object sender, FileSystemEventArgs e)
@@ -189,7 +142,7 @@ namespace VRCImagePreviewer
                 Image.EndInit();
                 stream.Close();
 
-                //ImgViewer.Source = new BitmapImage(new Uri(e.FullPath));
+                ImgViewer.Source = new BitmapImage(new Uri(e.FullPath));
                 list.Insert(0, new Photo { Source = Image, FilePath = e.FullPath });
 
             }));
