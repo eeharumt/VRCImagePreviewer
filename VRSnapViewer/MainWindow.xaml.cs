@@ -11,7 +11,7 @@ using System.Windows.Media.Imaging;
 using Image = System.Windows.Controls.Image;
 using Microsoft.WindowsAPICodePack.Dialogs;
 
-namespace VRCImagePreviewer
+namespace VRSnapViewer
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
