@@ -1,4 +1,4 @@
-VRCImagePreviewer
+VRSnapViewer
 ----
 The MIT License
 

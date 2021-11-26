@@ -1,4 +1,4 @@
-# VRCImagePreviewer
+# VRSnapViewer
 
 指定されたフォルダに追加された画像を表示するソフトウェアです。
 VRChat のカメラ画像のプレビューする用途などを想定しています。
