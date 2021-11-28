@@ -10,13 +10,14 @@ using System.Windows.Data;
 using System.Windows.Media.Imaging;
 using Image = System.Windows.Controls.Image;
 using Microsoft.WindowsAPICodePack.Dialogs;
-
+using MahApps.Metro.Controls;
+using ControlzEx.Theming;
 namespace VRSnapViewer
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : MetroWindow
     {
         ObservableCollection<Photo> list = new ObservableCollection<Photo>();
         FileSystemWatcher? watcher = new FileSystemWatcher();

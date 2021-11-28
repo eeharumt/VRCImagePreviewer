@@ -24,6 +24,8 @@ MIT
 また、本ソフトウェアには以下のソフトウェアおよびその一部が含まれています。  
 各ソフトウェアのライセンス条項についてはLICENSEを参照ください。
 
+MahApps.Metro: https://github.com/MahApps/MahApps.Metro
+
 Material Design In XAML Toolkit: https://github.com/MaterialDesignInXAML/MaterialDesignInXamlToolkit
 
 Microsoft-WindowsAPICodePack-Shell: https://github.com/contre/Windows-API-Code-Pack-1.1
